@@ -63,6 +63,10 @@ const App = () => {
             </ul>
           </section>
         )}
+        <footer>
+          <p className="text-center">View my regular JavaScript bingo caller on <a className="text-decoration-none" href="https://github.com/Captain63/bingo-caller" target="_blank" rel="noreferrer"><i class="fab fa-github-square"></i> GitHub</a> and the <a className="text-decoration-none" href="https://captain63.github.io/bingo-caller" target="_blank" rel="noreferrer"><i className="fas fa-file"></i> live application</a>.</p>
+          <p className="text-center">&copy; 2022 Stephen Roddewig</p>
+        </footer>
       </div>
     </div>
   );
