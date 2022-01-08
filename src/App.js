@@ -48,6 +48,7 @@ const App = () => {
         {bingoState.currentNum && <button onClick={reset}>Restart</button>}
         {validate() && <p><strong>All numbers called!</strong></p>}
         <h2>Current Num: {bingoState.currentNum}</h2>
+        <h3>Numbers Remaining: {bingoState.currentNum ? 74 - bingoState.pastNums.length : 75}</h3>
       </section>
     </>
   );
