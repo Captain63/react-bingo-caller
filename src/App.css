@@ -7,6 +7,17 @@
   pointer-events: none;
 }
 
+.current-border {
+  border: 2px solid blue;
+  border-radius: 2px;
+  width: fit-content;
+}
+
+.past-numbers-ul {
+  list-style-type: none;
+  padding-inline-start: 20px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
