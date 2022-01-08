@@ -17,10 +17,15 @@ function App() {
     console.log(bingoState.bingoNums.length);
   };
 
+  const validate = () => {
+    return bingoState.bingoNums.length === 0;
+  }
+
   return (
     <header>
       <h1>Let's Call Some Bingo Numbers</h1>
-      <button onClick={updateCurrent}>Generate Bingo Number</button>
+      <button onClick={updateCurrent} disabled={validate()}>Generate Bingo Number</button>
+      {validate() && <p><strong>All numbers called!</strong></p>}
       <h2>{bingoState.currentNum}</h2>
     </header>
   );
