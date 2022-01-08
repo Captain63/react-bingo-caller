@@ -4,7 +4,9 @@ import generateRandomNum from "./utils/generateRandomNum";
 import generateBingoNums from "./utils/generateBingoNums";
 
 const App = () => {
-  const [bingoState, setBingoState] = useState({ currentNum: '', bingoNums: generateBingoNums(), pastNums: [] });
+  const bingoNums = generateBingoNums();
+
+  const [bingoState, setBingoState] = useState({ currentNum: '', bingoNums: bingoNums, pastNums: [] });
 
   const updateCurrent = () => {
     const index = generateRandomNum(bingoState.bingoNums.length);
@@ -29,7 +31,11 @@ const App = () => {
   }
 
   const reset = () => {
-
+    setBingoState({
+      currentNum: '',
+      bingoNums: bingoNums,
+      pastNums: []
+    })
   }
 
   return (
@@ -41,8 +47,17 @@ const App = () => {
         <button onClick={updateCurrent} disabled={validate()}>Generate Bingo Number</button>
         {bingoState.currentNum && <button onClick={reset}>Restart</button>}
         {validate() && <p><strong>All numbers called!</strong></p>}
-        <h2>{bingoState.currentNum}</h2>
+        <h2>Current Num: {bingoState.currentNum}</h2>
+        <h3>Numbers Remaining: {bingoState.currentNum ? 74 - bingoState.pastNums.length : 75}</h3>
       </section>
+      {bingoState.pastNums.length > 0 && (
+        <section>
+          <h2>Past Numbers</h2>
+          <ul>
+            {bingoState.pastNums.map((num, i) => <li key={i}>{num}</li>)}
+          </ul>
+        </section>
+      )}
     </>
   );
 }
