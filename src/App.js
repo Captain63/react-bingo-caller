@@ -54,7 +54,7 @@ const App = () => {
         <section>
           <h2>Past Numbers</h2>
           <ul>
-            bingoState.pastNums.map((num, i) => <li key={i}>{num}</li>)
+            {bingoState.pastNums.map((num, i) => <li key={i}>{num}</li>)}
           </ul>
         </section>
       )}
