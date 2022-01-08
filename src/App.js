@@ -26,9 +26,7 @@ const App = () => {
     console.log(bingoState.bingoNums.length);
   };
 
-  const validate = () => {
-    return bingoState.bingoNums.length === 0;
-  }
+  const finished = () => bingoState.bingoNums.length === 0;
 
   const reset = () => {
     setBingoState({
@@ -45,16 +43,16 @@ const App = () => {
           <h1>Let's Call Some Bingo Numbers</h1>
         </header>
         <section>
-          {validate() && <p>All numbers called!</p>}
+          {finished() && <p>All numbers called!</p>}
           <div className="mb-4">
-            <button onClick={updateCurrent} disabled={validate()}>Generate Bingo Number</button>
+            <button onClick={updateCurrent} disabled={finished()}>Generate Bingo Number</button>
             {bingoState.currentNum && <button onClick={reset}>Restart</button>}
           </div>
           {bingoState.currentNum && (
-          <div>
-            <h2 className="current-border p-3">Current Num: {bingoState.currentNum}</h2>
-            <h4>Numbers Remaining: {bingoState.currentNum ? 74 - bingoState.pastNums.length : 75}</h4>
-          </div>
+            <div>
+              <h2 className="current-border p-3">Current Num: {bingoState.currentNum}</h2>
+              <h4>Numbers Remaining: {74 - bingoState.pastNums.length}</h4>
+            </div>
           )}
         </section>
         {bingoState.pastNums.length > 0 && (
