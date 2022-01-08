@@ -50,6 +50,14 @@ const App = () => {
         <h2>Current Num: {bingoState.currentNum}</h2>
         <h3>Numbers Remaining: {bingoState.currentNum ? 74 - bingoState.pastNums.length : 75}</h3>
       </section>
+      {bingoState.pastNums.length > 0 && (
+        <section>
+          <h2>Past Numbers</h2>
+          <ul>
+            bingoState.pastNums.map((num, i) => <li key={i}>{num}</li>)
+          </ul>
+        </section>
+      )}
     </>
   );
 }
