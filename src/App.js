@@ -39,26 +39,34 @@ const App = () => {
   }
 
   return (
-    <>
-      <header>
-        <h1>Let's Call Some Bingo Numbers</h1>
-      </header>
-      <section>
-        <button onClick={updateCurrent} disabled={validate()}>Generate Bingo Number</button>
-        {bingoState.currentNum && <button onClick={reset}>Restart</button>}
-        {validate() && <p><strong>All numbers called!</strong></p>}
-        <h2>Current Num: {bingoState.currentNum}</h2>
-        <h3>Numbers Remaining: {bingoState.currentNum ? 74 - bingoState.pastNums.length : 75}</h3>
-      </section>
-      {bingoState.pastNums.length > 0 && (
+    <div className="d-flex justify-content-center p-2 px-md-0">
+      <div className="col-12 col-md-6">
+        <header className="mb-4">
+          <h1>Let's Call Some Bingo Numbers</h1>
+        </header>
         <section>
-          <h2>Past Numbers</h2>
-          <ul>
-            {bingoState.pastNums.map((num, i) => <li key={i}>{num}</li>)}
-          </ul>
+          {validate() && <p>All numbers called!</p>}
+          <div className="mb-4">
+            <button onClick={updateCurrent} disabled={validate()}>Generate Bingo Number</button>
+            {bingoState.currentNum && <button onClick={reset}>Restart</button>}
+          </div>
+          {bingoState.currentNum && (
+          <div>
+            <h2 className="current-border p-3">Current Num: {bingoState.currentNum}</h2>
+            <h4>Numbers Remaining: {bingoState.currentNum ? 74 - bingoState.pastNums.length : 75}</h4>
+          </div>
+          )}
         </section>
-      )}
-    </>
+        {bingoState.pastNums.length > 0 && (
+          <section>
+            <h4>Past Numbers</h4>
+            <ul className="past-numbers-ul">
+              {bingoState.pastNums.map((num, i) => <li key={i}>{num}</li>)}
+            </ul>
+          </section>
+        )}
+      </div>
+    </div>
   );
 }
 
