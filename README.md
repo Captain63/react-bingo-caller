@@ -12,7 +12,7 @@ This bingo number calling app is built for use with the [My Free Bingo Cards web
 
 In light of this issue, I said "How hard can it be to write a random bingo number caller?" This application and the [regular JS implementation](https://github.com/Captain63/bingo-caller) that preceded it are the result of that question.
 
-[View the live application](https://neighborhood-handyman.herokuapp.com/).
+[View the live application](https://captain63.github.io/react-bingo-caller).
 
 ### Languages Used
 - JavaScript (React)
