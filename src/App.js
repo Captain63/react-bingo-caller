@@ -4,13 +4,22 @@ import generateRandomNum from "./utils/generateRandomNum";
 import generateBingoNums from "./utils/generateBingoNums";
 
 const App = () => {
+  // Create array of bingo numbers
   const bingoNums = generateBingoNums();
 
-  const [bingoState, setBingoState] = useState({ currentNum: '', bingoNums: bingoNums, pastNums: [] });
+  // Create initial state with useState hook
+  const [bingoState, setBingoState] = useState({ 
+    currentNum: '', 
+    bingoNums: bingoNums, 
+    pastNums: [] 
+  });
 
+  // Call new bingo number
   const updateCurrent = () => {
+    // Generate random index number
     const index = generateRandomNum(bingoState.bingoNums.length);
 
+    // Add current number to start of past numbers array
     if (bingoState.currentNum) {
       setBingoState({
         ...bingoState,
@@ -18,16 +27,17 @@ const App = () => {
       })
     }
 
+    // Splice value from array with random index and set to currentNum
     setBingoState({
       ...bingoState,
       currentNum: bingoState.bingoNums.splice(index, 1)
     })
-
-    console.log(bingoState.bingoNums.length);
   };
 
+  // Returns true once all numbers have been pulled from bingoNums state array
   const finished = () => bingoState.bingoNums.length === 0;
 
+  // Reset state values
   const reset = () => {
     setBingoState({
       currentNum: '',
@@ -43,11 +53,15 @@ const App = () => {
           <h1>Let's Call Some Bingo Numbers</h1>
         </header>
         <section>
+          {/* Show finished message once all numbers are called */}
           {finished() && <p>All numbers called!</p>}
           <div className="mb-4">
+            {/* Generate new bingo number */}
             <button onClick={updateCurrent} disabled={finished()}>Generate Bingo Number</button>
+            {/* Restart call sequence -- displays once first number is created */}
             {bingoState.currentNum && <button onClick={reset}>Restart</button>}
           </div>
+          {/* Render once first number has been called */}
           {bingoState.currentNum && (
             <div>
               <h2 className="current-border p-3">Current Num: {bingoState.currentNum}</h2>
@@ -55,10 +69,12 @@ const App = () => {
             </div>
           )}
         </section>
+        {/* Only render once past numbers are stored in array */}
         {bingoState.pastNums.length > 0 && (
           <section>
             <h4>Past Numbers</h4>
             <ul className="past-numbers-ul">
+              {/* Maps array of past numbers */}
               {bingoState.pastNums.map((num, i) => <li key={i}>{num}</li>)}
             </ul>
           </section>
